@@ -33,7 +33,7 @@ function getUrlParameters() {
         nombreCliente: urlParams.get('nombreCliente') || '',
         noVenta: urlParams.get('noVenta') || '',
         fechaVenta: formatDate(urlParams.get('fechaVenta')) || '',
-        precioVenta: urlParams.get('precioVenta') || '',
+        precio: urlParams.get('precioVenta') || '',
         codigoP: urlParams.get('codigoP') || '',
         descripcionP: urlParams.get('descripcionP') || '',
         cantidadDevuelta: urlParams.get('cantidadDevuelta') || '',
@@ -89,8 +89,8 @@ function setValues() {
 
     // Generar el código QR
     const qrImg = document.querySelector('.qr-code img');
-    if (qrImg && params.noRecibo) {
-        qrImg.src = `https://quickchart.io/qr?text=${params.noRecibo}&size=100`;
+    if (qrImg && params.noComprobante) {
+        qrImg.src = `https://quickchart.io/qr?text=${params.noComprobante}&size=100`;
     }
 }
 
