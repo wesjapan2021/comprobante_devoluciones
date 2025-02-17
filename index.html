@@ -1,52 +1,32 @@
+<!-- filepath: index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMPROBANTE DEVOLUCION</title>
+    <title>Comprobante de Devolución</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="comprobante">
         <div class="header">
-            <img src="LOGO_COMPROBANTE.png" alt="Logo Empresa">
-            <h2></h2>
-            <h3>COMPROBANTE DEVOLUCION</h3>
+            <h2>Comprobante de Devolución</h2>
+            <p id="noComprobante"></p>
         </div>
         
-        <div class="content">
-            <div class="detail"><strong>NO. COMPROBANTE:</strong> <span data-field="noComprobante"></span></div>
-            <div class="detail"><strong>FECHA DE DEVOLUCION:</strong> <span data-field="fechaDevolucion"></span></div>
-            <div class="detail"><strong>CODIGO CLIENTE:</strong> <span data-field="idCliente"></span></div>
-            <div class="detail"><strong>NOMBRE CLIENTE:</strong> <span data-field="nombreCliente"></span></div>
-            <div class="detail"><strong>CODIGO DE VENTA:</strong> <span data-field="noVenta"></span></div>
-            div class="detail"><strong>FECHA VENTA:</strong> <span data-field="fechaVenta"></span></div>
-            div class="detail"><strong>PRECIO:</strong> <span data-field="precioVenta"></span></div>
-            <div class="detail"><strong>CODIGO:</strong> <span data-field="codigoP"></span></div>
-            <div class="detail"><strong>DESCRIPCION:</strong> <span data-field="descripcionP"></span></div>
-            <div class="detail"><strong>CANTIDAD DEVUELTA:</strong> <span data-field="cantidadDevuelta"></span></div>
-            <div class="detail"><strong>ESTADO:</strong> <span data-field="status"></span></div>
-            <div class="detail"><strong>MOTIVO DE DEVOLUCION:</strong> <span data-field="motivoDevolucion"></span></div>
-            <div class="detail"><strong>PROCEDO A:</strong> <span data-field="procedoA"></span></div>
-            <div class="detail"><strong>ASESOR:</strong> <span data-field="nombreAsesor"></span></div>
-        </div>
-            
-        <div class="signature">
-            <strong>F:</strong><br>
-            <img src="" alt="Firma del asesor">
-        </div>
-
-        <div class="qr-code">
-            <img src="" alt="QR Code">
-        </div>
-
-        <p></p>
-        <p><strong>TODO LO PUEDO EN CRISTO QUE ME FORTALECE!</strong></p>
-        <p></p>
-        
-        <div class="footer">
-        <p></p>
-        </div>
+        <p><strong>Fecha de Devolución:</strong> <span id="fechaDevolucion"></span></p>
+        <p><strong>Cliente:</strong> <span id="idCliente"></span> - <span id="nombreCliente"></span></p>
+        <p><strong>No. Venta:</strong> <span id="noVenta"></span></p>
+        <p><strong>Fecha de Venta:</strong> <span id="fechaVenta"></span></p>
+        <p><strong>Precio de Venta:</strong> <span id="precioV"></span></p>
+        <p><strong>Código Producto:</strong> <span id="codigoP"></span></p>
+        <p><strong>Descripción:</strong> <span id="descripcionP"></span></p>
+        <p><strong>Cantidad Devuelta:</strong> <span id="cantidadDevuelta"></span></p>
+        <p><strong>Status:</strong> <span id="status"></span></p>
+        <p><strong>Motivo de Devolución:</strong> <span id="motivoDevolucion"></span></p>
+        <p><strong>Procedo a:</strong> <span id="procedoA"></span></p>
+        <p><strong>Asesor:</strong> <span id="nombreAsesor"></span></p>
+        <img id="firmaAsesor" class="firma" src="" alt="Firma del Asesor">
     </div>
     <script src="script.js"></script>
 </body>
