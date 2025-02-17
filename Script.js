@@ -1,29 +1,90 @@
-function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    var results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+// Función para sanitizar el HTML
+function sanitizeHTML(str) {
+    const temp = document.createElement('div');
+    temp.textContent = str;
+    return temp.innerHTML;
 }
 
-window.onload = function() {
-    document.getElementById('fechaDevolucion').textContent = getUrlParameter('fechaDevolucion');
-    document.getElementById('noComprobante').textContent = getUrlParameter('noComprobante');
-    document.getElementById('idCliente').textContent = getUrlParameter('idCliente');
-    document.getElementById('nombreCliente').textContent = getUrlParameter('nombreCliente');
-    document.getElementById('noVenta').textContent = getUrlParameter('noVenta');
-    document.getElementById('fechaVenta').textContent = getUrlParameter('fechaVenta');
-    document.getElementById('precioV').textContent = getUrlParameter('precioV');
-    document.getElementById('codigoP').textContent = getUrlParameter('codigoP');
-    document.getElementById('descripcionP').textContent = getUrlParameter('descripcionP');
-    document.getElementById('cantidadDevuelta').textContent = getUrlParameter('cantidadDevuelta');
-    document.getElementById('status').textContent = getUrlParameter('status');
-    document.getElementById('motivoDevolucion').textContent = getUrlParameter('motivoDevolucion');
-    document.getElementById('procedoA').textContent = getUrlParameter('procedoA');
-    document.getElementById('nombreAsesor').textContent = getUrlParameter('nombreAsesor');
-    
-    // Para la firma, asumiendo que es una URL de imagen
-    let firmaUrl = getUrlParameter('firmaAsesor');
-    if (firmaUrl) {
-        document.getElementById('firmaAsesor').src = firmaUrl;
+// Función para formatear fecha a dd/mm/yyyy
+function formatDate(dateStr) {
+    if (!dateStr) return '';
+    try {
+        const date = new Date(dateStr);
+        if (isNaN(date.getTime())) return dateStr;
+        
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        
+        return `${day}/${month}/${year}`;
+    } catch (e) {
+        console.error('Error formateando fecha:', e);
+        return dateStr;
     }
 }
+
+// Función para obtener y decodificar parámetros de la URL
+function getUrlParameters() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const params = {
+        fechaDevolucion: formatDate(urlParams.get('fechaDevolucion')) || '',
+        noComprobante: urlParams.get('noComprobante') || '',
+        idCliente: urlParams.get('idCliente') || '',
+        nombreCliente: urlParams.get('nombreCliente') || '',
+        noVenta: urlParams.get('noVenta') || '',
+        fechaVenta: urlParams.get('fechaVenta') || '',
+        precioV: urlParams.get('precioV') || '',
+        codigoP: urlParams.get('codigoP') || '',
+        descripcionP: urlParams.get('descripcionP') || '',
+        cantidadDevuelta: urlParams.get('cantidadDevuelta') || '',
+        status: urlParams.get('status') || '',
+        motivoDevolucion: formatDate(urlParams.get('motivoDevolucion')) || '',
+        procedoA: formatDate(urlParams.get('procedoA')) || '',
+        nombreAsesor: urlParams.get('nombreAsesor') || '',
+        firmaAsesor: urlParams.get('firmaAsesor') || '',
+        idFirmaAsesorImagen: urlParams.get('idFirmaAsesorImagen') || ''
+    };
+
+    return params;
+}
+
+// Función para asignar valores a los elementos HTML
+function setValues() {
+    const params = getUrlParameters();
+    
+    // Asignar valores usando data-field
+    Object.keys(params).forEach(key => {
+        const elements = document.querySelectorAll(`[data-field="${key}"]`);
+        elements.forEach(element => {
+            element.textContent = sanitizeHTML(params[key]);
+        });
+    });
+
+    // Manejar la imagen de la firma
+    if (params.idFirmaAsesorImagen) {
+        const firmaImg = document.querySelector('.signature img');
+        if (firmaImg) {
+            firmaImg.src = `https://drive.google.com/thumbnail?id=${params.idFirmaAsesorImagen}&sz=4000`;
+        }
+    }
+
+    // Generar el código QR
+    const qrImg = document.querySelector('.qr-code img');
+    if (qrImg && params.noRecibo) {
+        qrImg.src = `https://quickchart.io/qr?text=${params.noRecibo}&size=100`;
+    }
+}
+
+// Inicialización cuando se carga la página
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        setValues();
+        // Imprimir automáticamente
+        window.onload = function() {
+            window.print();
+        };
+    } catch (error) {
+        console.error('Error en la inicialización:', error);
+        alert('Ocurrió un error al inicializar la página. Por favor, recargue la página.');
+    }
+}); 
