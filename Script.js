@@ -27,22 +27,22 @@ function formatDate(dateStr) {
 function getUrlParameters() {
     const urlParams = new URLSearchParams(window.location.search);
     const params = {
-        fechaDevolucion: formatDate(urlParams.get('fechaDevolucion')) || '',
-        noComprobante: urlParams.get('noComprobante') || '',
-        idCliente: urlParams.get('idCliente') || '',
-        nombreCliente: urlParams.get('nombreCliente') || '',
-        noVenta: urlParams.get('noVenta') || '',
-        fechaVenta: urlParams.get('fechaVenta') || '',
-        precioV: urlParams.get('precioV') || '',
-        codigoP: urlParams.get('codigoP') || '',
-        descripcionP: urlParams.get('descripcionP') || '',
-        cantidadDevuelta: urlParams.get('cantidadDevuelta') || '',
-        status: urlParams.get('status') || '',
-        motivoDevolucion: formatDate(urlParams.get('motivoDevolucion')) || '',
-        procedoA: formatDate(urlParams.get('procedoA')) || '',
-        nombreAsesor: urlParams.get('nombreAsesor') || '',
-        firmaAsesor: urlParams.get('firmaAsesor') || '',
-        idFirmaAsesorImagen: urlParams.get('idFirmaAsesorImagen') || ''
+        fechaDevolucion: formatDate(decodeURIComponent(urlParams.get('fechaDevolucion') || '')),
+        noComprobante: decodeURIComponent(urlParams.get('noComprobante') || ''),
+        idCliente: decodeURIComponent(urlParams.get('idCliente') || ''),
+        nombreCliente: decodeURIComponent(urlParams.get('nombreCliente') || ''),
+        noVenta: decodeURIComponent(urlParams.get('noVenta') || ''),
+        fechaVenta: formatDate(decodeURIComponent(urlParams.get('fechaVenta') || '')),
+        precioV: decodeURIComponent(urlParams.get('precioV') || ''),
+        codigoP: decodeURIComponent(urlParams.get('codigoP') || ''),
+        descripcionP: decodeURIComponent(urlParams.get('descripcionP') || ''),
+        cantidadDevuelta: decodeURIComponent(urlParams.get('cantidadDevuelta') || ''),
+        status: decodeURIComponent(urlParams.get('status') || ''),
+        motivoDevolucion: decodeURIComponent(urlParams.get('motivoDevolucion') || ''),
+        procedoA: decodeURIComponent(urlParams.get('procedoA') || ''),
+        nombreAsesor: decodeURIComponent(urlParams.get('nombreAsesor') || ''),
+        firmaAsesor: decodeURIComponent(urlParams.get('firmaAsesor') || ''),
+        idFirmaAsesorImagen: decodeURIComponent(urlParams.get('idFirmaAsesorImagen') || '')
     };
 
     return params;
@@ -56,7 +56,20 @@ function setValues() {
     Object.keys(params).forEach(key => {
         const elements = document.querySelectorAll(`[data-field="${key}"]`);
         elements.forEach(element => {
-            element.textContent = sanitizeHTML(params[key]);
+            // Si es un campo de precio, formatear como moneda
+            if (key === 'precioV') {
+                const price = parseFloat(params[key]);
+                if (!isNaN(price)) {
+                    element.textContent = price.toLocaleString('es-GT', {
+                        style: 'currency',
+                        currency: 'GTQ'
+                    });
+                } else {
+                    element.textContent = sanitizeHTML(params[key]);
+                }
+            } else {
+                element.textContent = sanitizeHTML(params[key]);
+            }
         });
     });
 
@@ -65,13 +78,15 @@ function setValues() {
         const firmaImg = document.querySelector('.signature img');
         if (firmaImg) {
             firmaImg.src = `https://drive.google.com/thumbnail?id=${params.idFirmaAsesorImagen}&sz=4000`;
+            firmaImg.alt = `Firma de ${params.nombreAsesor}`;
         }
     }
 
-    // Generar el código QR
+    // Generar el código QR si existe noComprobante
     const qrImg = document.querySelector('.qr-code img');
-    if (qrImg && params.noRecibo) {
-        qrImg.src = `https://quickchart.io/qr?text=${params.noRecibo}&size=100`;
+    if (qrImg && params.noComprobante) {
+        qrImg.src = `https://quickchart.io/qr?text=${params.noComprobante}&size=100`;
+        qrImg.alt = `QR Comprobante ${params.noComprobante}`;
     }
 }
 
@@ -79,12 +94,15 @@ function setValues() {
 document.addEventListener('DOMContentLoaded', function() {
     try {
         setValues();
-        // Imprimir automáticamente
+        // Imprimir automáticamente cuando todos los recursos (imágenes) se hayan cargado
         window.onload = function() {
-            window.print();
+            // Pequeño retraso para asegurar que las imágenes se hayan renderizado completamente
+            setTimeout(() => {
+                window.print();
+            }, 1000);
         };
     } catch (error) {
         console.error('Error en la inicialización:', error);
         alert('Ocurrió un error al inicializar la página. Por favor, recargue la página.');
     }
-}); 
+});
