@@ -3,51 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMPROBANTE DEVOLUCION</title>
+    <title>Comprobante de Devolución</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="printArea">
         <div class="header">
-            <img src="LOGO_COMPROBANTE.png" alt="Logo Empresa">
-            <h2></h2>
-            <h3>COMPROBANTE DEVOLUCION</h3>
+            <h1>COMPROBANTE DE DEVOLUCIÓN</h1>
         </div>
         
         <div class="content">
-            <div class="detail"><strong>NO. COMPROBANTE:</strong> <span id="noComprobante"></span></div>
-            <div class="detail"><strong>FECHA DE DEVOLUCION:</strong> <span id="fechaDevolucion"></span></div>
-            <div class="detail"><strong>CODIGO DE CLIENTE:</strong> <span id="idCliente"></span></div>
-            <div class="detail"><strong>NOMBRE CLIENTE:</strong> <span id="nombreCliente"></span></div>
-            <div class="detail"><strong>CODIGO DE VENTA:</strong> <span id="noVenta"></span></div>
-            <div class="detail"><strong>FECHA DE VENTA:</strong> <span id="fechaVenta"></span></div>
-            <div class="detail"><strong>PRECIO VENTA:</strong> <span id="precioV"></span></div>
-            <div class="detail"><strong>CODIGO:</strong> <span id="codigoP"></span></div>
-            <div class="detail"><strong>DESCRIPCION:</strong> <span id="descripcionP"></span></div>
-            <div class="detail"><strong>CANTIDAD DEVUELTA:</strong> <span id="cantidadDevuelta"></span></div>
-            <div class="detail"><strong>STATUS:</strong> <span id="status"></span></div>
-            <div class="detail"><strong>PROBLEMA DEL REPUESTO:</strong> <span id="motivoDevolucion"></span></div>
-            <div class="detail"><strong>PROCEDO A:</strong> <span id="procedoA"></span></div>
-            <div class="detail"><strong>ASESOR:</strong> <span id="nombreAsesor"></span></div>
-        </div>
-            
-        <div class="signature">
-            <strong>F:</strong><br>
-            <img id="firmaAsesor" alt="firmaAsesor">
+            <div class="info-group">
+                <div class="info-row">
+                    <span class="label">NO. COMPROBANTE:</span>
+                    <span id="noComprobante" class="value"></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">FECHA:</span>
+                    <span id="fechaDevolucion" class="value"></span>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-row">
+                    <span class="label">CÓDIGO DE CLIENTE:</span>
+                    <span id="idCliente" class="value"></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">NOMBRE DE CLIENTE:</span>
+                    <span id="nombreCliente" class="value"></span>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-row">
+                    <span class="label">CÓDIGO VENTA:</span>
+                    <span id="noVenta" class="value"></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">FECHA VENTA:</span>
+                    <span id="fechaVenta" class="value"></span>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-row">
+                    <span class="label">PRECIO:</span>
+                    <span id="precioV" class="value"></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">P. CÓDIGO:</span>
+                    <span id="codigoP" class="value"></span>
+                </div>
+            </div>
+
+            <div class="info-group full-width">
+                <div class="info-row">
+                    <span class="label">DESCRIPCIÓN:</span>
+                    <span id="descripcionP" class="value"></span>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-row">
+                    <span class="label">CANTIDAD:</span>
+                    <span id="cantidadDevuelta" class="value"></span>
+                </div>
+                <div class="info-row">
+                    <span class="label">ESTADO:</span>
+                    <span id="status" class="value"></span>
+                </div>
+            </div>
+
+            <div class="info-group full-width">
+                <div class="info-row">
+                    <span class="label">MOTIVO DE DEVOLUCIÓN:</span>
+                    <span id="motivoDevolucion" class="value"></span>
+                </div>
+            </div>
+
+            <div class="info-group full-width">
+                <div class="info-row">
+                    <span class="label">PROCEDO A:</span>
+                    <span id="procedoA" class="value"></span>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-row">
+                    <span class="label">ASESOR:</span>
+                    <span id="nombreAsesor" class="value"></span>
+                </div>
+            </div>
+
+            <div class="signature-section">
+                <img id="firmaAsesor" alt="Firma del Asesor" class="signature">
+                <div class="signature-line"></div>
+                <p class="signature-label">Firma del Asesor</p>
+            </div>
         </div>
 
-        <div class="qr-code">
-            <img id="idFirmaAsesorImagen" alt="QR">
-        </div>
-
-        <p></p>
-        <p><strong>TODO LO PUEDO EN CRISTO QUE ME FORTALECE!</strong></p>
-        <p></p>
-        
         <div class="footer">
-        <p></p>
+            <div class="divider">...</div>
+            <div class="bible-verse">TODO LO PUEDO EN CRISTO QUE ME FORTALECE!</div>
         </div>
     </div>
+    <button id="printButton" class="print-button">Imprimir Comprobante</button>
     <script src="script.js"></script>
 </body>
 </html>
