@@ -42,7 +42,8 @@ function getUrlParameters() {
         procedoA: urlParams.get('procedoA') || '',
         nombreAsesor: urlParams.get('nombreAsesor') || '',
         idFirmaAsesorImagen: urlParams.get('idFirmaAsesorImagen') || '',
-        firmaAsesor: urlParams.get('firmaAsesor') || ''
+        firmaAsesor: urlParams.get('firmaAsesor') || '',
+        qr: urlParams.get('qr') || ''
     };
 
     // Decodificar todos los valores
@@ -88,8 +89,8 @@ function setValues() {
 
     // Generar el código QR
     const qrImg = document.querySelector('.qr-code img');
-    if (qrImg && params.noRecibo) {
-        qrImg.src = `https://quickchart.io/qr?text=${params.noRecibo}&size=100`;
+    if (qrImg && params.noComprobante) {
+        qrImg.src = `https://quickchart.io/qr?text=${params.noComprobante}&size=100`;
     }
 }
 
