@@ -1,14 +1,14 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 0.5;
     font-size: 15px;
     text-align: left;
     width: 90mm; /* Ancho típico para impresoras térmicas */
 }
 
 .container {
-    padding: 5mm;
+    padding: 10mm;
 }
 
 .header, .footer {
