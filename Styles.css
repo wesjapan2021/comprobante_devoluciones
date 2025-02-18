@@ -16,6 +16,8 @@ body {
 .header {
     text-align: center;
     margin-bottom: 10px;
+    font-size: 18px; /* Reduce font size for thermal printer */
+    font-weight: bold;
 }
 
 .header img.logo {
