@@ -78,16 +78,18 @@ function setValues() {
     document.getElementById("procedoA").textContent = params.procedoA;
     document.getElementById("nombreAsesor").textContent = params.nombreAsesor;
 
-    // Manejar la imagen de la firma
-    const signatureImg = document.getElementById('firmaAsesor');
-    if (signatureImg) {
-        if (params.idFirmaAsesorImagen) {
-            signatureImg.src = decodeURIComponent(params.idFirmaAsesorImagen);
-        } else if (params.firmaAsesor) {
-            signatureImg.src = decodeURIComponent(params.firmaAsesor);
-        } else {
-            signatureImg.style.display = 'none';
+        // Manejar la imagen de la firma
+    if (params.idFirmaAsesorImagen) {
+        const firmaImg = document.querySelector('.signature img');
+        if (firmaImg) {
+            firmaImg.src = `https://drive.google.com/thumbnail?id=${params.idFirmaAsesorImagen}&sz=4000`;
         }
+    }
+
+    // Generar el código QR
+    const qrImg = document.querySelector('.qr-code img');
+    if (qrImg && params.noRecibo) {
+        qrImg.src = `https://quickchart.io/qr?text=${params.noRecibo}&size=100`;
     }
 }
 
