@@ -1,38 +1,38 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
-    background-color: #f0f0f0;
+    padding: 10px;
+    background-color: #ffffff; /* Use white background for thermal printer */
 }
 
 .container {
     background-color: white;
-    padding: 20px;
-    max-width: 800px;
+    padding: 10px;
+    max-width: 100%; /* Allow full width for thermal printer */
     margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: none; /* Disable shadows for clear printing */
 }
 
 .header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .header h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 18px; /* Reduce font size for thermal printer */
     font-weight: bold;
 }
 
 .content {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .info-group {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 5px;
 }
 
 .info-group.full-width .info-row {
@@ -40,15 +40,15 @@ body {
 }
 
 .info-row {
-    flex: 1 1 45%;
+    flex: 1 1 100%; /* Full width rows for thermal printing */
     display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: 5px;
 }
 
 .label {
     font-weight: bold;
-    min-width: 150px;
+    min-width: 100px; /* Adjust label width for thermal printer */
 }
 
 .value {
@@ -56,18 +56,18 @@ body {
 }
 
 .signature-section {
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: center;
 }
 
 .signature {
-    max-width: 200px;
-    max-height: 100px;
+    max-width: 150px; /* Adjust signature size for thermal printer */
+    max-height: 75px;
     margin-bottom: 5px;
 }
 
 .signature-line {
-    width: 200px;
+    width: 150px; /* Adjust signature line width for thermal printer */
     height: 1px;
     background-color: #000;
     margin: 5px auto;
@@ -75,35 +75,36 @@ body {
 
 .signature-label {
     margin: 5px 0;
-    font-size: 14px;
+    font-size: 12px; /* Reduce font size for thermal printer */
 }
 
 .footer {
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: center;
 }
 
 .divider {
     margin: 10px 0;
-    font-size: 20px;
-    letter-spacing: 5px;
+    font-size: 16px; /* Reduce font size for thermal printer */
+    letter-spacing: 2px;
 }
 
 .bible-verse {
     font-style: italic;
     margin: 10px 0;
+    font-size: 12px; /* Adjust font size for thermal printer */
 }
 
 .print-button {
     display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
+    margin: 10px auto;
+    padding: 5px 10px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px; /* Adjust button font size for thermal printer */
 }
 
 .print-button:hover {
