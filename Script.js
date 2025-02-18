@@ -49,8 +49,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Establecer cada valor en su elemento correspondiente
         for (const [paramName, elementId] of Object.entries(mappings)) {
             const element = document.getElementById(elementId);
+            console.log(`Buscando elemento con ID ${elementId}:`, element);
             if (element && params[paramName]) {
                 let value = params[paramName];
+                console.log(`Valor recibido para ${paramName}:`, value);
                 
                 // Aplicar formato específico según el campo
                 if (paramName === 'precioV') {
