@@ -18,8 +18,8 @@ body {
 }
 
 .header img {
-    width: 150px; /* Adjust width to auto */
-    height: 15px; /* Match the font size */
+    width: 90mm; /* Adjust width to auto */
+    height: auto; /* Match the font size */
     align: left;
 }
 
