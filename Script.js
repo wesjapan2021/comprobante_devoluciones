@@ -94,31 +94,14 @@ function setValues() {
     }
 }
 
-// Función para imprimir el documento
-function printDocument() {
-    const printButton = document.querySelector('.print-button');
-    if (printButton) {
-        printButton.style.display = 'none';
-    }
-    
-    window.print();
-    
-    setTimeout(() => {
-        if (printButton) {
-            printButton.style.display = 'block';
-        }
-    }, 100);
-}
-
 // Inicialización cuando se carga la página
-window.onload = function() {
+document.addEventListener('DOMContentLoaded', function() {
     try {
         setValues();
-        // Agregar el evento de impresión al botón
-        const printButton = document.querySelector('.print-button');
-        if (printButton) {
-            printButton.addEventListener('click', printDocument);
-        }
+        // Imprimir automáticamente
+        window.onload = function() {
+            window.print();
+        };
     } catch (error) {
         console.error('Error en la inicialización:', error);
         alert('Ocurrió un error al inicializar la página. Por favor, recargue la página.');
