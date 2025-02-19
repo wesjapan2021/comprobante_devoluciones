@@ -18,8 +18,9 @@ body {
 }
 
 .header img {
-    width: auto; /* Adjust width to auto */
+    width: 150px; /* Adjust width to auto */
     height: 15px; /* Match the font size */
+    align: left;
 }
 
 .content {
