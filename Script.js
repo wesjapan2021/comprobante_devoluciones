@@ -22,6 +22,7 @@ function formatDate(dateStr) {
         return dateStr;
     }
 }
+
 // Función para obtener y decodificar parámetros de la URL
 function getUrlParameters() {
     const urlParams = new URLSearchParams(window.location.search);
