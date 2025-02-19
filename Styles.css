@@ -41,12 +41,22 @@ body {
     line-height: 2; /* Aumentar el espacio entre líneas */
 }
 
-.qr-code, .signature {
+.signature {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.signature img {
+    max-width: 300px;
+    max-height: 150px;
+    margin: 10px 0;
+}
+.qr-code {
     text-align: left;
     margin-top: 5mm;
 }
 
-.qr-code img, .signature img {
+.qr-code img  {
     width: 100px; /* Adjust size as needed */
     height: auto;
 }
