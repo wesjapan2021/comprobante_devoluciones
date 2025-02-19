@@ -1,3 +1,5 @@
+/* Existing styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -16,8 +18,8 @@ body {
 }
 
 .header img {
-    width: 150px; /* Ajusta el tamaño según sea necesario */
-    height: auto;
+    width: auto; /* Adjust width to auto */
+    height: 15px; /* Match the font size */
 }
 
 .content {
@@ -31,10 +33,18 @@ body {
 }
 
 .qr-code img, .signature img {
-    width: 100px; /* Ajusta el tamaño según sea necesario */
+    width: 100px; /* Adjust size as needed */
     height: auto;
 }
 
 .footer {
     margin-top: 10mm;
-} 
+}
+
+/* Print-specific styles */
+@media print {
+    .header img {
+        width: auto; /* Adjust width to auto */
+        height: 15px; /* Match the font size */
+    }
+}
