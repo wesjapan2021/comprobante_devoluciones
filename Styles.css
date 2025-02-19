@@ -35,9 +35,10 @@ body {
     margin-top: 8mm;
     margin-bottom: 8mm;
     text-align: left;
-    padding: 1.1;
+    padding: 2mm; /* Aumentar el relleno para más espacio */
     font-size: 10px;
     width: 100mm;
+    line-height: 1.5; /* Aumentar el espacio entre líneas */
 }
 
 .qr-code, .signature {
