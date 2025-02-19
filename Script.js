@@ -79,7 +79,7 @@ function setValues() {
     document.getElementById("procedoA").textContent = params.procedoA;
     document.getElementById("nombreAsesor").textContent = params.nombreAsesor;
 
-        // Manejar la imagen de la firma
+// Manejar la imagen de la firma
     if (params.idFirmaAsesorImagen) {
         const firmaImg = document.querySelector('.signature img');
         if (firmaImg) {
