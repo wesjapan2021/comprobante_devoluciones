@@ -10,7 +10,7 @@ function formatDate(dateStr) {
     if (!dateStr) return '';
     try {
         const date = new Date(dateStr);
-        if (isNaN(date.getTime())) return dateStr;
+        if (isNaN(date.getTime())) return dateStr; // Si no es una fecha válida, retorna el string original
         
         const day = date.getDate().toString().padStart(2, '0');
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -78,8 +78,8 @@ function setValues() {
     document.getElementById("motivoDevolucion").textContent = params.motivoDevolucion;
     document.getElementById("procedoA").textContent = params.procedoA;
     document.getElementById("nombreAsesor").textContent = params.nombreAsesor;
-    
-// Manejar la imagen de la firma
+
+        // Manejar la imagen de la firma
     if (params.idFirmaAsesorImagen) {
         const firmaImg = document.querySelector('.signature img');
         if (firmaImg) {
@@ -94,14 +94,31 @@ function setValues() {
     }
 }
 
+// Función para imprimir el documento
+function printDocument() {
+    const printButton = document.querySelector('.print-button');
+    if (printButton) {
+        printButton.style.display = 'none';
+    }
+    
+    window.print();
+    
+    setTimeout(() => {
+        if (printButton) {
+            printButton.style.display = 'block';
+        }
+    }, 100);
+}
+
 // Inicialización cuando se carga la página
-document.addEventListener('DOMContentLoaded', function() {
+window.onload = function() {
     try {
         setValues();
-        // Imprimir automáticamente
-        window.onload = function() {
-            window.print();
-        };
+        // Agregar el evento de impresión al botón
+        const printButton = document.querySelector('.print-button');
+        if (printButton) {
+            printButton.addEventListener('click', printDocument);
+        }
     } catch (error) {
         console.error('Error en la inicialización:', error);
         alert('Ocurrió un error al inicializar la página. Por favor, recargue la página.');
