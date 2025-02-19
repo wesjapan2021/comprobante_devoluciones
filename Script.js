@@ -27,7 +27,7 @@ function formatDate(dateStr) {
 function getUrlParameters() {
     const urlParams = new URLSearchParams(window.location.search);
     const params = {
-        fechaDevolucion: urlParams.get('fechaDevolucion') || '',
+        fechaDevolucion: formatDate(urlParams.get('fechaDevolucion')) || '',
         noComprobante: urlParams.get('noComprobante') || '',
         idCliente: urlParams.get('idCliente') || '',
         nombreCliente: urlParams.get('nombreCliente') || '',
