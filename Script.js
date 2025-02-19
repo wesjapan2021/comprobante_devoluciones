@@ -10,7 +10,7 @@ function formatDate(dateStr) {
     if (!dateStr) return '';
     try {
         const date = new Date(dateStr);
-        if (isNaN(date.getTime())) return dateStr; // Si no es una fecha válida, retorna el string original
+        if (isNaN(date.getTime())) return dateStr;
         
         const day = date.getDate().toString().padStart(2, '0');
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -22,7 +22,6 @@ function formatDate(dateStr) {
         return dateStr;
     }
 }
-
 // Función para obtener y decodificar parámetros de la URL
 function getUrlParameters() {
     const urlParams = new URLSearchParams(window.location.search);
