@@ -18,7 +18,7 @@ body {
 }
 
 .header img {
-    width: 300px; /* Adjust width to auto */
+    width: 90mm; /* Adjust width to auto */
     height: auto; /* Match the font size */
     align: left;
 }
@@ -45,7 +45,7 @@ body {
 /* Print-specific styles */
 @media print {
     .header img {
-        width: 300; /* Adjust width to auto */
+        width: 90mm; /* Adjust width to auto */
         height: auto; /* Match the font size */
     }
 }
