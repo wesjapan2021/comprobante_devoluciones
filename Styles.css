@@ -26,7 +26,7 @@ body {
 }
 
 .logo {
-    width: 110mm; /* Adjust width to auto */
+    width: 80mm; /* Adjust width to auto */
     height: auto; /* Match the font size */
     align: left;
 }
