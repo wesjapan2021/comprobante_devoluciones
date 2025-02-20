@@ -42,14 +42,14 @@ body {
 }
 
 .signature {
-    margin: 20px 0;
     text-align: left;
+    font-size: 15px;
 }
 
 .signature img {
-    max-width: 300px;
-    max-height: 150px;
-    margin: 10px 0;
+    width: 110mm; /* Adjust width to auto */
+    height: auto; /* Match the font size */
+    align: left;
 }
 .qr-code {
     text-align: left;
