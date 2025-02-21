@@ -6,7 +6,7 @@ body {
     padding: 0.9;
     font-size: 15px;
     text-align: left;
-    width: 90mm; /* Ancho típico para impresoras térmicas */
+    width: 110mm; /* Ancho típico para impresoras térmicas */
 }
 
 .container {
@@ -70,7 +70,7 @@ body {
 /* Print-specific styles */
 @media print {
     .header img {
-        width: 90mm; /* Adjust width to auto */
+        width: 110mm; /* Adjust width to auto */
         height: auto; /* Match the font size */
     }
 }
