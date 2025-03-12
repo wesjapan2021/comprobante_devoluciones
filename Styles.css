@@ -13,7 +13,7 @@ body {
     padding: 0.9;
 }
 
-.header, {
+.header {
     margin: 0.2;
     text-align: center;
     padding: 0.3;
@@ -53,12 +53,13 @@ body {
     height: auto; /* Match the font size */
     align: left;
 }
+
 .qr-code {
     text-align: left;
     margin-top: 5mm;
 }
 
-.qr-code img  {
+.qr-code img {
     width: 100px; /* Adjust size as needed */
     height: auto;
 }
@@ -74,5 +75,16 @@ body {
     .header img {
         width: 110mm; /* Adjust width to auto */
         height: auto; /* Match the font size */
+    }
+
+    /* Ensure content only prints up to the last line */
+    body {
+        width: auto;
+        height: auto;
+    }
+
+    /* Hide print button */
+    .print-button {
+        display: none;
     }
 }
